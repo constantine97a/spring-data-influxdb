@@ -1,0 +1,4 @@
+# Tooling related information for the InfluxDB namespace
+http\://www.springframework.org/schema/data/influxdb@name=InfluxDB Namespace
+http\://www.springframework.org/schema/data/influxdb@prefix=influxdb
+http\://www.springframework.org/schema/data/influxdb@icon=org/springframework/jdbc/config/spring-jdbc.gif

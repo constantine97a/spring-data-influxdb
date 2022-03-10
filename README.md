@@ -1,4 +1,3 @@
-
 [![Build Status](https://travis-ci.org/miwurster/spring-data-influxdb.svg?branch=master)](https://travis-ci.org/miwurster/spring-data-influxdb)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3655132cf1784740ac283db42470d8f9)](https://www.codacy.com/app/miwurster/spring-data-influxdb?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=miwurster/spring-data-influxdb&amp;utm_campaign=Badge_Grade)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.miwurster/spring-data-influxdb/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.miwurster/spring-data-influxdb)
@@ -7,9 +6,12 @@
 Spring Data InfluxDB
 --------------------
 
-The primary goal of the [Spring Data](http://projects.spring.io/spring-data/) project is to make it easier to build Spring-powered applications that use new data access technologies such as non-relational databases, map-reduce frameworks, and cloud based data services.
+The primary goal of the [Spring Data](http://projects.spring.io/spring-data/) project is to make it easier to build
+Spring-powered applications that use new data access technologies such as non-relational databases, map-reduce
+frameworks, and cloud based data services.
 
-This modules provides integration with the [InfluxDB](https://influxdata.com/) database and wraps the capabilities of the official [influxdb-java](https://github.com/influxdata/influxdb-java) library.
+This modules provides integration with the [InfluxDB](https://influxdata.com/) database and wraps the capabilities of
+the official [influxdb-java](https://github.com/influxdata/influxdb-java) library.
 
 ## Artifacts
 
@@ -36,9 +38,9 @@ This modules provides integration with the [InfluxDB](https://influxdata.com/) d
         database: test
         retention-policy: autogen
     ```
-    
-    Optionally, you can also configure connections, read, and write timeouts (in seconds):
-    
+
+  Optionally, you can also configure connections, read, and write timeouts (in seconds):
+
     ```yml
     spring:
       influxdb:    	
@@ -47,8 +49,8 @@ This modules provides integration with the [InfluxDB](https://influxdata.com/) d
         write-timeout: 10
     ```
 
-    Furthermore, one can enable gzip compression in order to reduce size of the transferred data:
-    
+  Furthermore, one can enable gzip compression in order to reduce size of the transferred data:
+
     ```yml
     spring:
       influxdb:    	
@@ -108,7 +110,7 @@ This modules provides integration with the [InfluxDB](https://influxdata.com/) d
 
 ## Building
 
-Spring Data InfluxDB uses Maven as its build system. 
+Spring Data InfluxDB uses Maven as its build system.
 
 ```bash
 mvn clean install

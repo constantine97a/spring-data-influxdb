@@ -13,125 +13,106 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.springframework.data.influxdb;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-@ConfigurationProperties("spring.influxdb")
-public class InfluxDBProperties
-{
-  @NotEmpty
-  private String url;
+public class InfluxDBProperties {
 
-  @NotEmpty
-  private String username;
+    @NotEmpty
+    private String url;
 
-  private String password;
+    @NotEmpty
+    private String username;
 
-  @NotEmpty
-  private String database;
+    private String password;
 
-  @NotEmpty
-  private String retentionPolicy;
+    @NotEmpty
+    private String database;
 
-  private int connectTimeout = 10;
+    @NotEmpty
+    private String retentionPolicy;
 
-  private int readTimeout = 30;
+    private int connectTimeout = 10;
 
-  private int writeTimeout = 10;
+    private int readTimeout = 30;
 
-  private boolean gzip = false;
+    private int writeTimeout = 10;
 
-  public String getUrl()
-  {
-    return url;
-  }
+    private boolean gzip = false;
 
-  public void setUrl(final String url)
-  {
-    this.url = url;
-  }
+    public String getUrl() {
+        return url;
+    }
 
-  public String getUsername()
-  {
-    return username;
-  }
+    public void setUrl(final String url) {
+        this.url = url;
+    }
 
-  public void setUsername(final String username)
-  {
-    this.username = username;
-  }
+    public String getUsername() {
+        return this.username;
+    }
 
-  public String getPassword()
-  {
-    return password;
-  }
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 
-  public void setPassword(final String password)
-  {
-    this.password = password;
-  }
+    public String getPassword() {
+        return this.password;
+    }
 
-  public String getDatabase()
-  {
-    return database;
-  }
+    public void setPassword(final String password) {
+        this.password = password;
+    }
 
-  public void setDatabase(final String database)
-  {
-    this.database = database;
-  }
+    public String getDatabase() {
+        return this.database;
+    }
 
-  public String getRetentionPolicy()
-  {
-    return retentionPolicy;
-  }
+    public void setDatabase(final String database) {
+        this.database = database;
+    }
 
-  public void setRetentionPolicy(final String retentionPolicy)
-  {
-    this.retentionPolicy = retentionPolicy;
-  }
+    public String getRetentionPolicy() {
+        return this.retentionPolicy;
+    }
 
-  public int getWriteTimeout()
-  {
-    return writeTimeout;
-  }
+    public void setRetentionPolicy(final String retentionPolicy) {
+        this.retentionPolicy = retentionPolicy;
+    }
 
-  public void setWriteTimeout(int writeTimeout)
-  {
-    this.writeTimeout = writeTimeout;
-  }
+    public int getWriteTimeout() {
+        return this.writeTimeout;
+    }
 
-  public int getConnectTimeout()
-  {
-    return connectTimeout;
-  }
+    public void setWriteTimeout(int writeTimeout) {
+        this.writeTimeout = writeTimeout;
+    }
 
-  public void setConnectTimeout(int connectTimeout)
-  {
-    this.connectTimeout = connectTimeout;
-  }
+    public int getConnectTimeout() {
+        return this.connectTimeout;
+    }
 
-  public int getReadTimeout()
-  {
-    return readTimeout;
-  }
+    public void setConnectTimeout(int connectTimeout) {
+        this.connectTimeout = connectTimeout;
+    }
 
-  public void setReadTimeout(int readTimeout)
-  {
-    this.readTimeout = readTimeout;
-  }
+    public int getReadTimeout() {
+        return this.readTimeout;
+    }
 
-  public boolean isGzip()
-  {
-    return gzip;
-  }
+    public void setReadTimeout(int readTimeout) {
+        this.readTimeout = readTimeout;
+    }
 
-  public void setGzip(boolean gzip)
-  {
-    this.gzip = gzip;
-  }
+    public boolean isGzip() {
+        return this.gzip;
+    }
+
+    public void setGzip(boolean gzip) {
+        this.gzip = gzip;
+    }
 }

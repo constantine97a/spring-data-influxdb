@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.springframework.data.influxdb.converter;
 
 import org.influxdb.dto.Point;
@@ -20,7 +21,6 @@ import org.springframework.core.convert.converter.Converter;
 
 import java.util.List;
 
-public interface PointCollectionConverter<T> extends Converter<T, List<Point>>
-{
+public interface PointCollectionConverter<T> extends Converter<T, List<Point>> {
 
 }

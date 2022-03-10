@@ -13,20 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.springframework.data.influxdb;
 
 import org.influxdb.dto.Point;
 import org.springframework.data.influxdb.converter.PointConverter;
+import org.springframework.data.influxdb.core.InfluxDBTemplate;
 
-public class DefaultInfluxDBTemplate extends InfluxDBTemplate<Point>
-{
-  public DefaultInfluxDBTemplate()
-  {
+public class DefaultInfluxDBTemplate extends InfluxDBTemplate<Point> {
 
-  }
+    public DefaultInfluxDBTemplate() {
 
-  public DefaultInfluxDBTemplate(final InfluxDBConnectionFactory connectionFactory)
-  {
-    super(connectionFactory, new PointConverter());
-  }
+    }
+
+    public DefaultInfluxDBTemplate(final InfluxDBConnectionFactory connectionFactory) {
+        super(connectionFactory, new PointConverter());
+    }
 }

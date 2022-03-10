@@ -1,0 +1,1 @@
+http\://www.springframework.org/schema/data/influxdb=org.springframework.data.influxdb.config.InfluxDBNamespaceHandler

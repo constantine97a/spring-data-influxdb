@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.springframework.data.influxdb;
 
 import okhttp3.OkHttpClient;
@@ -26,68 +27,60 @@ import org.springframework.util.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class InfluxDBConnectionFactory implements InitializingBean
-{
-  private static Logger logger = LoggerFactory.getLogger(InfluxDBConnectionFactory.class);
+public class InfluxDBConnectionFactory implements InitializingBean {
 
-  private InfluxDB connection;
+    private static Logger logger = LoggerFactory.getLogger(InfluxDBConnectionFactory.class);
 
-  private InfluxDBProperties properties;
+    private InfluxDB connection;
 
-  public InfluxDBConnectionFactory()
-  {
+    private InfluxDBProperties properties;
 
-  }
+    public InfluxDBConnectionFactory() {
 
-  public InfluxDBConnectionFactory(final InfluxDBProperties properties)
-  {
-    this.properties = properties;
-  }
-
-  public InfluxDB getConnection()
-  {
-    Assert.notNull(getProperties(), "InfluxDBProperties are required");
-    if (connection == null)
-    {
-      final Builder client = new OkHttpClient.Builder()
-        .connectTimeout(properties.getConnectTimeout(), TimeUnit.SECONDS)
-        .writeTimeout(properties.getWriteTimeout(), TimeUnit.SECONDS)
-        .readTimeout(properties.getReadTimeout(), TimeUnit.SECONDS);
-      connection = InfluxDBFactory
-        .connect(properties.getUrl(), properties.getUsername(), properties.getPassword(), client);
-      logger.debug("Using InfluxDB '{}' on '{}'", properties.getDatabase(), properties.getUrl());
-      if (properties.isGzip())
-      {
-        logger.debug("Enabled gzip compression for HTTP requests");
-        connection.enableGzip();
-      }
     }
-    return connection;
-  }
 
-  /**
-   * Returns the configuration properties.
-   *
-   * @return Returns the configuration properties
-   */
-  public InfluxDBProperties getProperties()
-  {
-    return properties;
-  }
+    public InfluxDBConnectionFactory(final InfluxDBProperties properties) {
+        this.properties = properties;
+    }
 
-  /**
-   * Sets the configuration properties.
-   *
-   * @param properties The configuration properties to set
-   */
-  public void setProperties(final InfluxDBProperties properties)
-  {
-    this.properties = properties;
-  }
+    public InfluxDB getConnection() {
+        Assert.notNull(getProperties(), "InfluxDBProperties are required");
+        if (this.connection == null) {
+            final Builder client = new OkHttpClient.Builder()
+                    .connectTimeout(this.properties.getConnectTimeout(), TimeUnit.SECONDS)
+                    .writeTimeout(this.properties.getWriteTimeout(), TimeUnit.SECONDS)
+                    .readTimeout(this.properties.getReadTimeout(), TimeUnit.SECONDS);
+            this.connection = InfluxDBFactory
+                    .connect(this.properties.getUrl(), this.properties.getUsername(), this.properties.getPassword(), client);
+            logger.debug("Using InfluxDB '{}' on '{}'", this.properties.getDatabase(), this.properties.getUrl());
+            if (properties.isGzip()) {
+                logger.debug("Enabled gzip compression for HTTP requests");
+                this.connection.enableGzip();
+            }
+        }
+        return this.connection;
+    }
 
-  @Override
-  public void afterPropertiesSet() throws Exception
-  {
-    Assert.notNull(getProperties(), "InfluxDBProperties are required");
-  }
+    /**
+     * Returns the configuration properties.
+     *
+     * @return Returns the configuration properties
+     */
+    public InfluxDBProperties getProperties() {
+        return this.properties;
+    }
+
+    /**
+     * Sets the configuration properties.
+     *
+     * @param properties The configuration properties to set
+     */
+    public void setProperties(final InfluxDBProperties properties) {
+        this.properties = properties;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        Assert.notNull(getProperties(), "InfluxDBProperties are required");
+    }
 }

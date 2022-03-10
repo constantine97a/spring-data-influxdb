@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/data/influxdb/spring-influxdb-1.0.xsd=org/springframework/data/influxdb/config/spring-influxdb-1.0.xsd
+https\://www.springframework.org/schema/data/influxdb/spring-influxdb-1.0.xsd=org/springframework/data/influxdb/config/spring-influxdb-1.0.xsd

@@ -1,0 +1,17 @@
+root = true
+
+[*.{groovy,java,kt}]
+indent_style = space
+indent_size = 4
+continuation_indent_size = 8
+
+[*.{xml,yaml,yml}]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 4
+
+[Makefile]
+indent_style = tab
+indent_size = 2
+continuation_indent_size = 4
+
