@@ -11,7 +11,28 @@ import java.lang.annotation.Target;
 @Persistent
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE })
+@Target({ElementType.TYPE})
 public @interface Measurement {
+
+
+    /**
+     * @return database name of influxdb
+     * <ul>
+     * <li>Lowercase only</li>
+     * <li>Cannot include \, /, *, ?, ", <, >, |, ` ` (space character), ,, #</li>
+     * <li>Cannot start with -, _, +</li>
+     * <li>Cannot be . or ..</li>
+     * <li>Cannot be longer than 255 bytes (note it is bytes, so multi-byte characters will count towards the 255 limit faster) for you programming sake</li>
+     * </ul>
+     * </ul>
+     */
+    String database();
+
+
+    /**
+     * @return Configuration whether to create a database on repository bootstrpping
+     */
+    boolean createDatabase() default true;
+
 
 }

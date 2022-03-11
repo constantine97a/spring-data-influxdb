@@ -5,8 +5,8 @@ import org.springframework.data.repository.core.EntityInformation;
 /**
  *
  * @param <T>
- * @param <TS>
+ * @param <ID>
  */
-public interface InfluxDBEntityInformation<T, TS> extends EntityInformation<T, TS> {
+public interface InfluxDBEntityInformation<T, ID> extends EntityInformation<T, ID> {
 
 }
