@@ -6,7 +6,8 @@ import org.springframework.data.mapping.model.AnnotationBasedPersistentProperty;
 import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 
-public class InfluxDBPersistentPropertyImpl extends AnnotationBasedPersistentProperty<InfluxDBPersistentProperty> implements InfluxDBPersistentProperty {
+public class SimpleInfluxDBPersistentProperty extends AnnotationBasedPersistentProperty<InfluxDBPersistentProperty>
+        implements InfluxDBPersistentProperty {
 
 
     /**
@@ -16,7 +17,7 @@ public class InfluxDBPersistentPropertyImpl extends AnnotationBasedPersistentPro
      * @param owner            must not be {@literal null}.
      * @param simpleTypeHolder
      */
-    public InfluxDBPersistentPropertyImpl(Property property, PersistentEntity<?, InfluxDBPersistentProperty> owner, SimpleTypeHolder simpleTypeHolder) {
+    public SimpleInfluxDBPersistentProperty(Property property, PersistentEntity<?, InfluxDBPersistentProperty> owner, SimpleTypeHolder simpleTypeHolder) {
         super(property, owner, simpleTypeHolder);
     }
 
