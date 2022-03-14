@@ -24,6 +24,12 @@ public class SimpleInfluxDBPersistentEntity<T> extends BasicPersistentEntity<T, 
 
     }
 
+    @Override
+    public boolean isCreateDatabase() {
+        //gather the settings value of annotation to decide create database or not
+        return false;
+    }
+
     /**
      * Configuration settings passed in from the creating {@link InfluxDBMappingContext}.
      */

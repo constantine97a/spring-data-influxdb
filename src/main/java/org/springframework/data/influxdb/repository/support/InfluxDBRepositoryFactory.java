@@ -5,6 +5,11 @@ import org.springframework.data.repository.core.EntityInformation;
 import org.springframework.data.repository.core.RepositoryInformation;
 import org.springframework.data.repository.core.RepositoryMetadata;
 import org.springframework.data.repository.core.support.RepositoryFactorySupport;
+import org.springframework.data.repository.query.QueryLookupStrategy;
+import org.springframework.data.repository.query.QueryMethodEvaluationContextProvider;
+import org.springframework.lang.Nullable;
+
+import java.util.Optional;
 
 
 /**
@@ -16,16 +21,30 @@ public class InfluxDBRepositoryFactory extends RepositoryFactorySupport {
 
     private final InfluxDBOperations influxDBOperations;
 
-
+    /**
+     * actually as {@link org.springframework.data.mapping.context.MappingContext} wrapper
+     */
+    private final InfluxDBEntityInformationCreator entityInformationCreator;
 
 
     public InfluxDBRepositoryFactory(InfluxDBOperations influxDBOperations) {
+
+        this(influxDBOperations, null);
+
+    }
+
+    public InfluxDBRepositoryFactory(InfluxDBOperations influxDBOperations, @Nullable InfluxDBEntityInformationCreator influxDBEntityInformationCreator) {
         this.influxDBOperations = influxDBOperations;
+        if (influxDBEntityInformationCreator != null) {
+            this.entityInformationCreator = influxDBEntityInformationCreator;
+        } else {
+            this.entityInformationCreator = new InfluxDBEntityInformationCreatorImpl(this.influxDBOperations.getInfluxDBConverter().getMappingContext());
+        }
     }
 
     @Override
     public <T, ID> EntityInformation<T, ID> getEntityInformation(Class<T> domainClass) {
-        return null;
+        return this.entityInformationCreator.getEntityInformation(domainClass);
     }
 
 
@@ -36,7 +55,8 @@ public class InfluxDBRepositoryFactory extends RepositoryFactorySupport {
      */
     @Override
     protected Object getTargetRepository(RepositoryInformation metadata) {
-        return null;
+        EntityInformation<?, Object> entityInformation = this.getEntityInformation(metadata.getDomainType());
+        return getTargetRepositoryViaReflection(metadata, entityInformation, this.influxDBOperations);
     }
 
     /**
@@ -46,6 +66,11 @@ public class InfluxDBRepositoryFactory extends RepositoryFactorySupport {
      */
     @Override
     protected Class<?> getRepositoryBaseClass(RepositoryMetadata metadata) {
-        return null;
+        return SimpleInfluxDBRepository.class;
+    }
+
+    @Override
+    protected Optional<QueryLookupStrategy> getQueryLookupStrategy(QueryLookupStrategy.Key key, QueryMethodEvaluationContextProvider evaluationContextProvider) {
+        return super.getQueryLookupStrategy(key, evaluationContextProvider);
     }
 }

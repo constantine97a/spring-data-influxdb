@@ -2,7 +2,7 @@ package org.springframework.data.influxdb.config;
 
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.core.annotation.AnnotationAttributes;
-import org.springframework.data.influxdb.annotation.Measurement;
+import org.springframework.data.influxdb.annotation.Point;
 import org.springframework.data.influxdb.repository.InfluxDBRepository;
 import org.springframework.data.influxdb.repository.support.InfluxDBRepositoryFactoryBean;
 import org.springframework.data.repository.config.AnnotationRepositoryConfigurationSource;
@@ -41,7 +41,7 @@ public class InfluxDBRepositoryConfigExtension extends RepositoryConfigurationEx
      */
     @Override
     protected Collection<Class<? extends Annotation>> getIdentifyingAnnotations() {
-        return Collections.singleton(Measurement.class);
+        return Collections.singleton(Point.class);
     }
 
 

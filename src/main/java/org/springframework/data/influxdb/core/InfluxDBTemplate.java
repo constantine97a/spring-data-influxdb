@@ -28,6 +28,7 @@ import org.springframework.data.influxdb.InfluxDBAccessor;
 import org.springframework.data.influxdb.InfluxDBConnectionFactory;
 import org.springframework.data.influxdb.converter.PointCollectionConverter;
 import org.springframework.data.influxdb.core.InfluxDBOperations;
+import org.springframework.data.influxdb.core.convert.InfluxDBConverter;
 import org.springframework.util.Assert;
 
 import java.util.Arrays;
@@ -108,6 +109,11 @@ public class InfluxDBTemplate<T> extends InfluxDBAccessor implements InfluxDBOpe
     @Override
     public String version() {
         return getConnection().version();
+    }
+
+    @Override
+    public InfluxDBConverter getInfluxDBConverter() {
+        return null;
     }
 
     @Override

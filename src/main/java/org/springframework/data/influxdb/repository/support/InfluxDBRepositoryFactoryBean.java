@@ -37,7 +37,7 @@ public class InfluxDBRepositoryFactoryBean<T extends Repository<S, ID>, S, ID ex
      */
     public void setInfluxDBOperations(InfluxDBOperations operations) {
         Assert.notNull(operations, "InfluxDBOperations must not be null");
-//        setMappingContext(operations.getElasticsearchConverter().getMappingContext());
+        setMappingContext(operations.getInfluxDBConverter().getMappingContext());
         this.operations = operations;
     }
 

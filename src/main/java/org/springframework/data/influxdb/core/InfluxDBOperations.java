@@ -19,6 +19,8 @@ package org.springframework.data.influxdb.core;
 import org.influxdb.dto.Pong;
 import org.influxdb.dto.Query;
 import org.influxdb.dto.QueryResult;
+import org.springframework.data.convert.EntityConverter;
+import org.springframework.data.influxdb.core.convert.InfluxDBConverter;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -100,6 +102,11 @@ public interface InfluxDBOperations<T> {
      */
     String version();
 
+
+    /**
+     * @return the {@link EntityConverter} influxdb implementation
+     */
+    InfluxDBConverter getInfluxDBConverter();
 
 
 }

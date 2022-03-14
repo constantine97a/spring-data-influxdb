@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-public @interface Measurement {
+public @interface Point {
 
 
     /**
@@ -30,9 +30,13 @@ public @interface Measurement {
 
 
     /**
-     * @return Configuration whether to create a database on repository bootstrpping
+     * @return the measurement that point below to
+     */
+    String measurement();
+
+    /**
+     * @return Configuration whether to create a database on repository bootstrapping
      */
     boolean createDatabase() default true;
-
 
 }

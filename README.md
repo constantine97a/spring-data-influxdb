@@ -6,6 +6,8 @@
 Spring Data InfluxDB
 --------------------
 
+[TOC]
+
 The primary goal of the [Spring Data](http://projects.spring.io/spring-data/) project is to make it easier to build
 Spring-powered applications that use new data access technologies such as non-relational databases, map-reduce
 frameworks, and cloud based data services.
@@ -115,3 +117,32 @@ Spring Data InfluxDB uses Maven as its build system.
 ```bash
 mvn clean install
 ```
+
+
+## Key Concepts
+
+### database
+A logical container for users, retention policies, continuous queries, and time series data.
+
+### field key
+The key part of the key-value pair that makes up a field. Field keys are strings and they store metadata.
+
+### field set
+The collection of field keys and field values on a point.
+
+### field value
+The value part of the key-value pair that makes up a field. Field values are the actual data; they can be strings, floats, integers, or booleans. A field value is always associated with a timestamp.
+Field values are not indexed - queries on field values scan all points that match the specified time range and, as a result, are not performant.
+Query tip: Compare field values to tag values; tag values are indexed.
+
+### measurement
+The part of the InfluxDB data structure that describes the data stored in the associated fields. Measurements are strings.
+
+### point
+In InfluxDB, a point represents a single data record, similar to a row in a SQL database table. Each point:
+
+has a measurement, a tag set, a field key, a field value, and a timestamp;
+is uniquely identified by its series and timestamp.
+You cannot store more than one point with the same timestamp in a series. If you write a point to a series with a timestamp that matches an existing point, the field set becomes a union of the old and new field set, and any ties go to the new field set. For more information about duplicate points, see How does InfluxDB handle duplicate points?
+
+Related entries: field set, series, timestamp

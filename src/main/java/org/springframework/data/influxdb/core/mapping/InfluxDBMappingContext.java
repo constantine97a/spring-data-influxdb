@@ -1,6 +1,6 @@
 package org.springframework.data.influxdb.core.mapping;
 
-import org.springframework.data.influxdb.annotation.Measurement;
+import org.springframework.data.influxdb.annotation.Point;
 import org.springframework.data.influxdb.annotation.Timestamp;
 import org.springframework.data.mapping.PersistentEntity;
 import org.springframework.data.mapping.context.AbstractMappingContext;
@@ -57,7 +57,7 @@ public class InfluxDBMappingContext extends AbstractMappingContext<SimpleInfluxD
                 hasTimestampKey = true;
             }
         }
-        return type.getType().isAnnotationPresent(Measurement.class) || hasTimestampKey;
+        return type.getType().isAnnotationPresent(Point.class) || hasTimestampKey;
     }
 
     @Override
